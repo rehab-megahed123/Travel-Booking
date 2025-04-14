@@ -34,7 +34,7 @@ namespace TravelBookingPortal.API
                 options.AddPolicy(name: myPolicy, policy =>
                 {
                     policy
-                    .WithOrigins("https://localhost:4200") //Rehab editing here
+                    .WithOrigins("http://localhost:4200") //Rehab editing here
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials(); //Rehab Editing Here
