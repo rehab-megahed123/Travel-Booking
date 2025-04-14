@@ -105,9 +105,9 @@ namespace TravelBookingPortal.Infrastructure.Extensions
             services.AddTransient<IBookingRepository, BookingRepository>();
             
             services.AddTransient<IProfileRepo, ProfileRepo>();
-            services.AddTransient<IBookingHub, BookingHub>();
-            services.AddTransient<INotificationService, BookingNotificationService>();
-
+            
+            services.AddScoped<IBookingStatusNotifier, BookingStatusNotifier>();
+           
             // Add SignalR 
             services.AddSignalR();
 

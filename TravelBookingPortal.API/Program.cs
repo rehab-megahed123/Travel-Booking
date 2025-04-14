@@ -34,22 +34,22 @@ namespace TravelBookingPortal.API
                 options.AddPolicy(name: myPolicy, policy =>
                 {
                     policy
-                        .AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
+                    .WithOrigins("https://localhost:4200") //Rehab editing here
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials(); //Rehab Editing Here
+                    
                 });
             });
 
             var app = builder.Build();
 
-           
 
 
-           
 
 
-            //Mapping HuBs
-            app.MapHub<BookingHub>("/bookingHub");
+
+
             var scope = app.Services.CreateScope();
             await scope.ServiceProvider.GetRequiredService<ITravelBookingSeeder>().Seed();
             // Configure the HTTP request pipeline.
@@ -61,14 +61,18 @@ namespace TravelBookingPortal.API
             }
 
             app.UseHttpsRedirection();
+            app.UseRouting(); //Rehab editing here
+            app.UseCors(myPolicy); //Rehab editing here
             app.UseAuthentication();
             app.UseAuthorization();
 
 
 
-            app.UseCors(myPolicy);
 
 
+
+            //Mapping HuBs
+            app.MapHub<BookingStatusHub>("/bookingStatusHub"); //Rehab Editing Here
             app.MapControllers();
 
             app.Run();

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TravelBookingPortal.Domain.IHubs
 {
-    public interface INotificationService
+   public  interface IBookingStatusNotifier
     {
-        Task SendBookingConfirmedAsync(int bookingId);
+        Task NotifyBookingStatusAsync(int roomId, string status);
     }
 }

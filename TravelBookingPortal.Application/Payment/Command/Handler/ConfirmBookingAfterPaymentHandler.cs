@@ -9,14 +9,14 @@ using TravelBookingPortal.Domain.Repositories.BookingRepo;
 public class ConfirmBookingAfterPaymentHandler : IRequestHandler<ConfirmBookingAfterPaymentCommand,Unit>
 {
     private readonly IBookingRepository _bookingRepository;
-    private readonly INotificationService _notificationService;
+    
 
     public ConfirmBookingAfterPaymentHandler(
-        IBookingRepository bookingRepository,
-        INotificationService notificationService)
+        IBookingRepository bookingRepository
+        )
     {
         _bookingRepository = bookingRepository;
-        _notificationService = notificationService;
+        
     }
 
     public async Task<Unit> Handle(ConfirmBookingAfterPaymentCommand request, CancellationToken cancellationToken)
@@ -29,7 +29,7 @@ public class ConfirmBookingAfterPaymentHandler : IRequestHandler<ConfirmBookingA
        
         await _bookingRepository.UpdateAsync(booking);
 
-        //await _notificationService.SendBookingConfirmedAsync(booking.BookingId);
+        
 
         return Unit.Value;
     }

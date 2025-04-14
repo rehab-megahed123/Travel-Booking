@@ -9,5 +9,7 @@ namespace TravelBookingPortal.Application.RoomLogic.Dtos
         public string RoomType { get; set; } 
         public decimal PricePerNight { get; set; }
         public string ImageUrl { get; set; }
+        public string BookingStatus { get; set; }
+        public bool IsBookable { get; set; }
     }
 }
